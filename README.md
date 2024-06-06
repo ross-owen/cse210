@@ -11,4 +11,3 @@ This repository contains the starter code for many different projects. They are 
 
 ## Keeping that stuff up there
 - i prefer hyphen in markdown over asterisk
-- 
