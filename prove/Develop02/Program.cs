@@ -1,9 +1,16 @@
-using System;
+using Develop02.Journal;
 
-class Program
+namespace Develop02;
+
+internal class Program
 {
+    private const string PromptFileName = "prompts.csv";
+
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Develop02 World!");
+        var promptService = new PromptService(PromptFileName);
+        var controller = new JournalController(promptService);
+        var view = new JournalView(controller);
+        view.Show();
     }
 }
