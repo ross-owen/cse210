@@ -74,5 +74,16 @@ public abstract class ViewBase<T> where T : IController
         return choice.Value;
     }
 
+    protected bool AskYesNo(string userDefault = "Y")
+    {
+        var userAnswer = Console.ReadLine();
+        if (string.IsNullOrEmpty(userAnswer))
+        {
+            userAnswer = userDefault;
+        }
+
+        return userAnswer.ToUpper().Equals("Y");
+    }
+
     public abstract void Show();
 }
