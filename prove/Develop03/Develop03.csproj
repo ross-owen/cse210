@@ -8,4 +8,8 @@
     <Nullable>disable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\sandbox\Sandbox\Sandbox.csproj" />
+  </ItemGroup>
+
 </Project>

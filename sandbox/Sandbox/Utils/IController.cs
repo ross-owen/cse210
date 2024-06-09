@@ -1,4 +1,4 @@
-﻿namespace Develop02;
+﻿namespace Sandbox.Utils;
 
 public interface IController
 {

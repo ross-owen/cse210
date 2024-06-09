@@ -1,4 +1,6 @@
-﻿namespace Develop02.Journal;
+﻿using Sandbox.Utils;
+
+namespace Develop02.Journal;
 
 public class JournalView : ViewBase<JournalController>
 {

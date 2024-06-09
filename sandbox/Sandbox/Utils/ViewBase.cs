@@ -1,4 +1,4 @@
-﻿namespace Develop02;
+﻿namespace Sandbox.Utils;
 
 public abstract class ViewBase<T> where T : IController
 {
@@ -25,7 +25,8 @@ public abstract class ViewBase<T> where T : IController
 
     protected void DisplayMenu()
     {
-        Console.WriteLine(_title);
+        Console.Clear();
+        Console.WriteLine(GetMenuTitle());
         Console.WriteLine("------------------");
         var keys = _menu.Keys;
         foreach (var key in keys)
@@ -86,4 +87,22 @@ public abstract class ViewBase<T> where T : IController
     }
 
     public abstract void Show();
+
+    protected virtual string GetMenuTitle()
+    {
+        return _title;
+    }
+
+    protected bool IsValidOption(IEnumerable<int> validOptions, string userInput, out int i)
+    {
+        if (int.TryParse(userInput, out var result))
+        {
+            var isValid = validOptions.Any(i => i == result);
+            i = result;
+            return isValid;
+        }
+
+        i = -1;
+        return false;
+    }
 }
