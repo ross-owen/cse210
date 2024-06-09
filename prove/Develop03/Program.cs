@@ -2,6 +2,26 @@ namespace Develop03;
 
 class Program
 {
+    /// <summary>
+    /// EXCEEDS:
+    /// Menu system to allow user to add a new scripture
+    ///     - saves added scripture to scriptures.json file
+    /// Menu to allow user to select a scripture from the saved
+    ///     json file
+    /// Smart Scripture Mastery creator that derives a "title" from
+    ///     the book, chapter, and verses
+    /// Allows multiple verses including skipping sequence verses
+    /// Uses MVC architecture
+    /// Uses random generator to randomly remove / hide words from
+    ///     the user.
+    /// Uses inheritance from ViewBase class and implements IController
+    /// Encapsulates all classes
+    /// JSON read/write requires properties from "entities" to be public
+    ///     or it won't be able to deserialize the json strings
+    ///     - use json attributes to force naming of json fields
+    /// Error protection enforcing user data where applicable
+    /// </summary>
+    /// <param name="args"></param>
     static void Main(string[] args)
     {
         var projectDir = Path.GetFullPath(@"..\..\..\");
