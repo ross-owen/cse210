@@ -2,6 +2,15 @@ namespace Develop04;
 
 class Program
 {
+    /// <summary>
+    /// EXCEEDS REQUIREMENTS
+    /// The program is broken out int MVC approach giving the View class the only one able to do a console out
+    /// this makes it more applicable and portable to other environments such as web or mobile
+    /// Utilizes a controller which utilizes the prompt/question repository
+    /// All Activities are dynamically created using a "plug-in" mentality
+    /// Uses an Activity Step class where the view knows how to display and ask for items as required by the activity
+    /// </summary>
+    /// <param name="args"></param>
     static void Main(string[] args)
     {
         // 1. Have a menu system to allow the user to choose an activity.
