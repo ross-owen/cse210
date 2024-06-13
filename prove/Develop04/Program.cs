@@ -1,4 +1,4 @@
-using System;
+namespace Develop04;
 
 class Program
 {
@@ -10,7 +10,13 @@ class Program
         // 4. Whenever the application pauses it should show some kind of animation to the user, such as a spinner, a countdown timer, or periods being displayed to the screen.
         // 5. The interface for the program should remain generally true to the one shown in the video demo.
         // 6. Provide activities for reflection, breathing, and enumeration, as described below:
+
+        // set the console to unicode so i can show a cooler spinner
+        Console.OutputEncoding = System.Text.Encoding.Unicode;
         
-        
+        var projectDir = Path.GetFullPath(@"..\..\..\");
+        var repoDir = new DirectoryInfo(projectDir);
+
+        new ActivityView(new ActivityController(new PromptRepository(repoDir))).ShowMenu();
     }
 }

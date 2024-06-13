@@ -1,0 +1,38 @@
+﻿[
+  {
+    "Id": "f32a1ac5-1742-4ca4-b4e3-2f3afee0387b",
+    "Text": "Why was this experience meaningful to you?"
+  },
+  {
+    "Id": "5bded8d0-1f0b-44c0-aa2e-bbafc8d0cbb4",
+    "Text": "Have you ever done anything like this before?"
+  },
+  {
+    "Id": "b3678429-981b-4080-b421-19bc79c41270",
+    "Text": "How did you get started?"
+  },
+  {
+    "Id": "f2356007-c8b3-4597-800f-fee40ff0f229",
+    "Text": "How did you feel when it was complete?"
+  },
+  {
+    "Id": "193a6a9c-43f3-468c-8d11-0d082a3dda2d",
+    "Text": "What made this time different than other times when you were not as successful?"
+  },
+  {
+    "Id": "9390a5d0-c8b7-4d57-b8fa-f5cd20776431",
+    "Text": "What is your favorite thing about this experience?"
+  },
+  {
+    "Id": "498ecd88-b7f9-4374-a0e7-29dc907e0244",
+    "Text": "What could you learn from this experience that applies to other situations?"
+  },
+  {
+    "Id": "c0af46da-dd99-47e9-90d0-8365dba9ccf8",
+    "Text": "What did you learn about yourself through this experience?"
+  },
+  {
+    "Id": "d1507ae9-49a3-4978-b91a-8a8cd52321f8",
+    "Text": "How can you keep this experience in mind in the future?"
+  }
+]

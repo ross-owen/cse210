@@ -2,6 +2,10 @@
 
 public class ListingActivity : ActivityBase
 {
+    public const string Name = "Listing Activity";
+
+    private const string Description = "This activity will help you reflect on the good things in your life by " +
+                                       "having you list as many things as you can in a certain area.";
     // Listing Activity
     // The activity should begin with the standard starting message and prompt for the duration that is used by all activities.
     // The description of this activity should be something like: "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area."
@@ -15,4 +19,7 @@ public class ListingActivity : ActivityBase
     // The user lists as many items as they can until they they reach the duration specified by the user at the beginning.
     // The activity them displays back the number of items that were entered.
     // The activity should conclude with the standard finishing message for all activities.
+    public ListingActivity() : base(Name, Description)
+    {
+    }
 }

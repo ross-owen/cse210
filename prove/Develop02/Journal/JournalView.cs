@@ -2,7 +2,7 @@
 
 namespace Develop02.Journal;
 
-public class JournalView : ViewBase<JournalController>
+public class JournalView : MenuViewBase<JournalController>
 {
     private readonly JournalController _controller;
     
@@ -25,7 +25,7 @@ public class JournalView : ViewBase<JournalController>
         Initialize("Journal Menu", menu, Exit);
     }
     
-    public override void Show()
+    public override void ShowMenu()
     {
         int? choice = null;
         while (choice is not Exit)

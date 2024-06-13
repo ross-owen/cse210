@@ -28,7 +28,7 @@ class Program
         var scriptureDir = new DirectoryInfo(projectDir);
         var repository = new ScriptureRepository(scriptureDir);
         var controller = new ScriptureController(repository);
-        new ScriptureView(controller).Show();
+        new ScriptureView(controller).ShowMenu();
 
         // FUNCTIONAL REQUIREMENTS
         // 1. Store a scripture, including both the reference (for example "John 3:16") and the text of the scripture.

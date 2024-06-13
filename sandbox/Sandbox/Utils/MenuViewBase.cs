@@ -1,6 +1,6 @@
 ﻿namespace Sandbox.Utils;
 
-public abstract class ViewBase<T> where T : IController
+public abstract class MenuViewBase<T> where T : IController
 {
     private string _title;
     private Dictionary<int, string> _menu;
@@ -86,7 +86,7 @@ public abstract class ViewBase<T> where T : IController
         return userAnswer.ToUpper().Equals("Y");
     }
 
-    public abstract void Show();
+    public abstract void ShowMenu();
 
     protected virtual string GetMenuTitle()
     {
@@ -104,5 +104,53 @@ public abstract class ViewBase<T> where T : IController
 
         i = -1;
         return false;
+    }
+
+    protected int AskInt(string question)
+    {
+        int? i = null;
+        
+        while (i == null)
+        {
+            Console.Write(question);
+            var userInput = Console.ReadLine();
+            if (!string.IsNullOrEmpty(userInput) && int.TryParse(userInput, out var value))
+            {
+                i = value;
+            }
+            else
+            {
+                Console.WriteLine("***Invalid entry.");
+                Console.WriteLine();
+            }
+        }
+
+        return i.Value;
+    }
+
+    protected static void ShowSpinner(int seconds, bool blink = false)
+    {
+        // start with a space so i can backspace over it 
+        // allows my loop to be the same
+        Console.Write(" ");
+        var spinner = new[] { '↑', '↗', '→', '↘', '↓', '↙', '←', '↖' };
+        if (blink)
+        {
+            spinner = new[] { ' ', '_', ' ', '_' };
+        }
+
+        // one round is 1 second
+        // 8 characters in the spinner equates to 125 milliseconds each
+        for (var i = 0; i < seconds; i++)
+        {
+            foreach (var c in spinner)
+            {
+                Console.Write($"\b{c}");
+                Thread.Sleep(1000 / spinner.Length);
+            }
+        }
+
+        // back up, replace with a space, then back up again
+        Console.Write("\b \b");
     }
 }

@@ -38,6 +38,6 @@ internal class Program
         
         var controller = new JournalController(promptRepository, journalRepository);
         
-        new JournalView(controller).Show();
+        new JournalView(controller).ShowMenu();
     }
 }

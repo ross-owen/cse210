@@ -2,7 +2,7 @@
 
 namespace Develop03;
 
-public class ScriptureView: ViewBase<ScriptureController>
+public class ScriptureView: MenuViewBase<ScriptureController>
 {
     private readonly ScriptureController _controller;
     private ScriptureMastery _memorizingScripture;
@@ -24,7 +24,7 @@ public class ScriptureView: ViewBase<ScriptureController>
         Initialize("Scripture Memory", menu, Exit);
     }
 
-    public override void Show()
+    public override void ShowMenu()
     {
         int? choice = null;
         while (choice is not Exit)
