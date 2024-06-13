@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using Sandbox.Utils;
+﻿using Sandbox.Utils;
 
 namespace Develop04;
 
@@ -24,7 +23,7 @@ public class ActivityController : IController
             case ActivityType.Reflection:
                 return new ReflectionActivity(this);
             case ActivityType.Listing:
-                return new ListingActivity();
+                return new ListingActivity(this);
             case ActivityType.Pondering:
                 return new PonderActivity();
             default:
@@ -32,15 +31,15 @@ public class ActivityController : IController
         }
     }
 
-    public string GetRandomPrompt()
+    public string GetRandomPrompt(PromptType promptType)
     {
-        return GetRandomTextFromPrompts(_repository.GetPrompts(), PromptType.Prompt);
+        return GetRandomTextFromPrompts(_repository.GetPrompts(promptType), promptType);
     }
 
     public List<string> GetRandomQuestions(int quantity)
     {
         var questions = new List<string>();
-        var allQuestions = _repository.GetQuestions();
+        var allQuestions = _repository.GetReflectionQuestions();
         for (var i = 0; i < quantity; i++)
         {
             questions.Add(GetRandomTextFromPrompts(allQuestions, PromptType.Question));
@@ -79,11 +78,5 @@ public class ActivityController : IController
         
         // return the unused, now used prompt text
         return prompt.Text;
-    }
-
-    private enum PromptType
-    {
-        Prompt,
-        Question
     }
 }

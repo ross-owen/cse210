@@ -59,7 +59,7 @@ public class ReflectionActivity : ActivityBase
         steps.Add(new ActivityStep
         {
             Type = ActivityStepType.PrintLine,
-            Text = $"--- {_controller.GetRandomPrompt()} ---",
+            Text = $"--- {_controller.GetRandomPrompt(PromptType.ReflectionPrompt)} ---",
             LineFeed = true
         });
         steps.Add(new ActivityStep

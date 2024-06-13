@@ -16,7 +16,6 @@ public class ActivityView : MenuViewBase<ActivityController>
             { (int)ActivityType.Breathing, BreathingActivity.Name },
             { (int)ActivityType.Reflection, ReflectionActivity.Name },
             { (int)ActivityType.Listing, ListingActivity.Name },
-            { (int)ActivityType.Pondering, PonderActivity.Name },
         };
         Initialize("Mindfulness Program", menu, Exit);
     }
@@ -73,7 +72,7 @@ public class ActivityView : MenuViewBase<ActivityController>
             return;
         }
 
-        RunSteps(steps);
+        RunSteps(activity);
         
         Console.WriteLine();
         Console.WriteLine("Well done!!");
@@ -83,8 +82,9 @@ public class ActivityView : MenuViewBase<ActivityController>
         ShowSpinner(5);
     }
 
-    private void RunSteps(List<ActivityStep> steps)
+    private void RunSteps(ActivityBase activity)
     {
+        var steps = activity.GetSteps();
         foreach (var step in steps)
         {
             switch (step.Type)
@@ -98,12 +98,11 @@ public class ActivityView : MenuViewBase<ActivityController>
                 case ActivityStepType.Timer:
                     HandleTimer(step);
                     break;
-                case ActivityStepType.CountDown:
+                case ActivityStepType.Input:
+                    HandleInput(activity, step);
                     break;
                 case ActivityStepType.KeyPress:
                     HandleKeyPress(step);
-                    break;
-                case ActivityStepType.Input:
                     break;
                 case ActivityStepType.Spinner:
                     HandleSpinner(step);
@@ -123,7 +122,7 @@ public class ActivityView : MenuViewBase<ActivityController>
         LineFeed(step);
     }
 
-    private void HandlePrintLine(ActivityStep step)
+    private static void HandlePrintLine(ActivityStep step)
     {
         Console.WriteLine(step.Text);
         LineFeed(step);
@@ -188,6 +187,33 @@ public class ActivityView : MenuViewBase<ActivityController>
         }
         
         ShowSpinner(step.Seconds);
+        
+        LineFeed(step);
+    }
+    
+    private static void HandleInput(ActivityBase activity, ActivityStep step)
+    {
+        if (step.RepeatUntilTimesUp)
+        {
+            var count = 0;
+            var until = DateTime.Now.AddSeconds(activity.GetDurationSeconds());
+            while (DateTime.Now < until)
+            {
+                Console.Write(step.Text);
+                Console.ReadLine(); // ignoring result for now - unless we decide to do something with them later
+                count++;
+            }
+
+            if (count > 1 && !string.IsNullOrEmpty(step.TextAfter))
+            {
+                Console.WriteLine(step.TextAfter.Replace("{count}", count.ToString()));
+            }
+        }
+        else
+        {
+            Console.Write(step.Text);
+            Console.ReadLine();
+        }
         
         LineFeed(step);
     }
