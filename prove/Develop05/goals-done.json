@@ -1,0 +1,28 @@
+{
+  "Score": 1500,
+  "Goals": [
+    {
+      "$type": "simple",
+      "IsComplete": true,
+      "ShortName": "give a talk",
+      "Description": "speak in sacrament meeting",
+      "Points": 100
+    },
+    {
+      "$type": "eternal",
+      "DoneCount": 2,
+      "ShortName": "study the scriptures",
+      "Description": "at least 10 minutes",
+      "Points": 50
+    },
+    {
+      "$type": "checklist",
+      "AmountCompleted": 6,
+      "Target": 3,
+      "Bonus": 500,
+      "ShortName": "attend the temple",
+      "Description": "perform ordinances",
+      "Points": 550
+    }
+  ]
+}
