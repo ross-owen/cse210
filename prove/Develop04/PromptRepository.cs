@@ -4,23 +4,13 @@ namespace Develop04;
 
 public class PromptRepository
 {
-    private const string ReflectionPromptFileName = "reflection-prompts.json";
-    private const string ReflectionsFileName = "reflection-questions.json";
-    private const string ListingPromptFileName = "listing-prompts.json";
+    private const string ReflectionPromptFileName = "Prompts/reflection-prompts.json";
+    private const string ReflectionsFileName = "Prompts/reflection-questions.json";
+    private const string ListingPromptFileName = "Prompts/listing-prompts.json";
 
-    private readonly DirectoryInfo _repoDir;
-    private List<Prompt> _reflectionPrompts = null;
-    private List<Prompt> _reflectionQuestions = null;
-    private List<Prompt> _listingPrompts = null;
-
-    public PromptRepository(DirectoryInfo repoDir)
-    {
-        if (!repoDir.Exists)
-        {
-            throw new ArgumentException("Prompt Directory does not exist. Check your code");
-        }
-        _repoDir = repoDir;
-    }
+    private List<Prompt> _reflectionPrompts;
+    private List<Prompt> _reflectionQuestions;
+    private List<Prompt> _listingPrompts;
 
     public List<Prompt> GetPrompts(PromptType promptType)
     {
@@ -39,8 +29,7 @@ public class PromptRepository
             return _reflectionPrompts;
         }
         
-        var filePath = new FileInfo(Path.Combine(_repoDir.FullName, ReflectionPromptFileName)).FullName;
-        var json = File.ReadAllText(filePath);
+        var json = File.ReadAllText(ReflectionPromptFileName);
         _reflectionPrompts = JsonSerializer.Deserialize<List<Prompt>>(json);
 
         return _reflectionPrompts;
@@ -53,8 +42,7 @@ public class PromptRepository
             return _reflectionQuestions;
         }
         
-        var filePath = new FileInfo(Path.Combine(_repoDir.FullName, ReflectionsFileName)).FullName;
-        var json = File.ReadAllText(filePath);
+        var json = File.ReadAllText(ReflectionsFileName);
         _reflectionQuestions = JsonSerializer.Deserialize<List<Prompt>>(json);
 
         return _reflectionQuestions;
@@ -67,8 +55,7 @@ public class PromptRepository
             return _listingPrompts;
         }
         
-        var filePath = new FileInfo(Path.Combine(_repoDir.FullName, ListingPromptFileName)).FullName;
-        var json = File.ReadAllText(filePath);
+        var json = File.ReadAllText(ListingPromptFileName);
         _listingPrompts = JsonSerializer.Deserialize<List<Prompt>>(json);
 
         return _listingPrompts;

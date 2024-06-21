@@ -22,15 +22,6 @@ class Program
 
         // set the console to unicode so i can show a cooler spinner
         Console.OutputEncoding = System.Text.Encoding.Unicode;
-        
-        // get the current directory where the executable is running
-        // it will likely be this project dir + \bin\Debug\net8.0
-        // **** ATTENTION GRADER ****
-        // *** IF THE PROGRAM DOESN'T RUN, PLEASE MANUALLY CHANGE THE PROJECT ROOT DIR TO 
-        // MATCH YOUR `prove/Develop04` directory, so it can find the prompts file
-        var exeDir = Path.GetFullPath(@".");
-        var projectRootDir = new DirectoryInfo(exeDir).Parent?.Parent?.Parent;
-
-        new ActivityView(new ActivityController(new PromptRepository(projectRootDir))).ShowMenu();
+        new ActivityView(new ActivityController(new PromptRepository())).ShowMenu();
     }
 }
