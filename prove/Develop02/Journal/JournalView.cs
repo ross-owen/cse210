@@ -80,7 +80,8 @@ public class JournalView : MenuViewBase<JournalController>
         {
             HandleJournalDoesNotExist();
         }
-        else
+
+        if (journal != null)
         {
             Console.WriteLine("\n\n-----------------------");
             Console.WriteLine(journal.ToString());
@@ -89,7 +90,9 @@ public class JournalView : MenuViewBase<JournalController>
             {
                 Console.WriteLine(entry);
             }
+
             Console.WriteLine("\n");
+            ShowSpinner(5, true);
         }
     }
 

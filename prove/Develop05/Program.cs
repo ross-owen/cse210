@@ -27,9 +27,14 @@ class Program
     static void Main(string[] args)
     {
         Console.OutputEncoding = System.Text.Encoding.Unicode;
-        var projectDir = Path.GetFullPath(@"..\..\..\");
-        var fileDir = new DirectoryInfo(projectDir);
+        
+        // EXE will likely be in `{projectDir} + \bin\Debug\net8.0`
+        // **** ATTENTION GRADER ****
+        // *** IF THE PROGRAM DOESN'T RUN, PLEASE MANUALLY CHANGE THE PROJECT ROOT DIR TO 
+        // MATCH YOUR `prove/Develop05` directory, so it can work with the saving/retrieving of files
+        var exeDir = Path.GetFullPath(@".");
+        var projectRootDir = new DirectoryInfo(exeDir).Parent?.Parent?.Parent;
 
-        new GoalManager(new GoalsController(fileDir)).Start();
+        new GoalManager(new GoalsController(projectRootDir)).Start();
     }
 }
