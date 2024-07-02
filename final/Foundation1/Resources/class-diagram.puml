@@ -1,0 +1,24 @@
+@startuml
+
+class Video {
+    string _title
+    string _author
+    int _length
+    List<Comment> _comments
+    string GetTitle()
+    string GetAuthor()
+    int GetLength()
+    List<Comment> GetComments()
+    int GetCommentCount()
+}
+
+class Comment {
+    string _author
+    string _text
+    string GetPersonName()
+    string GetText()
+}
+
+Video -{ Comment : has many >
+
+@enduml
