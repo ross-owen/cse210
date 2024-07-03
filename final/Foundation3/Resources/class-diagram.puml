@@ -1,0 +1,45 @@
+@startuml
+
+abstract class EventBase<T> {
+    string _title
+    string _description
+    DateTime _date
+    Address _address    
+    --
+    abstract string GetEventTypeName()
+    abstract string GetDetails()
+    --
+    string GetStandardDetails()
+    string GetFullDetails() : GetDetails()
+    string GetShortDescription()
+    string GetTitle()
+    DateTime GetEventDate()
+}
+
+class Lecture {
+    string _speaker
+    int _maxCapacity
+    --
+    override string GetEventTypeName()
+    override string GetDetails()
+}
+
+class Reception {
+    string _rsvpEmailAddress;
+    --
+    override string GetEventTypeName()
+    override string GetDetails()    
+}
+
+class OutdoorGathering {
+    string _weatherPostalCode
+    --
+    override string GetEventTypeName()
+    override string GetDetails()    
+}
+
+EventBase <|-- Lecture
+EventBase <|-- Reception
+EventBase <|-- OutdoorGathering
+
+@enduml
