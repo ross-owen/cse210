@@ -72,16 +72,6 @@ class Program
         return builder.ToString().Trim();
     }
 
-    private static string BuildSeparator(int length)
-    {
-        var separator = "";
-        for (var i = 0; i < length; i++)
-        {
-            separator += "-";
-        }
-        return separator;
-    }
-
     private static void PrintInColor(string label, string value, ConsoleColor color = ConsoleColor.Blue, ConsoleColor? valueColor = null)
     {
         var oldColor = Console.ForegroundColor;

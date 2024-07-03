@@ -1,0 +1,47 @@
+@startuml
+
+class Product {
+    Guid _id
+    string _name
+    double _price
+    int _quantity
+    
+    double GetTotal() : qty * price
+    string ToString() : comma separated string of all fields
+    string DisplayForPacking() : display for packing list
+}
+
+class Customer {
+    string _name
+    Address _address
+    
+    bool IsInUsa() : get from address
+    string GetAddressLabel() : get from name and address
+}
+
+class Address {
+    string streetAddress
+    string city
+    string stateProvince
+    string country
+    
+    bool IsInUsa()
+    string ToString()
+}
+
+class Order {
+    Guid _orderNumber
+    List<Product> _products
+    Customer _customer
+    
+    private double GetShippingCost() : if USA then $5 else $35
+    double GetTotalCost() : sum of all line items + shipping
+    string GetPackingLabel() : lists name and product ids
+    string GetShippingLabel() : list name and address of customer
+}
+
+Order -{ Product
+Order -- Customer
+Customer -- Address
+
+@enduml
