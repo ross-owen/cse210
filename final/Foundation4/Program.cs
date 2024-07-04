@@ -15,6 +15,7 @@ class Program
         foreach (var activity in activities)
         {
             Console.WriteLine(activity.GetSummary());
+            var runningActivity = (RunningActivity)activity;
         }
     }
 
