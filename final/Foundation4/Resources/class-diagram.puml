@@ -1,0 +1,46 @@
+@startuml
+
+abstract class ActivityBase {
+    DateTime _date 
+    int _duration : in minutes
+    --
+    abstract string GetExerciseName()
+    abstract double GetDistance() : miles
+    abstract double GetSpeed() : mph
+    abstract double GetPace() : minutes/mile
+    --
+    string GetSummary()
+}
+
+class RunningActivity {
+    int _distance
+    --
+    override string GetExerciseName()
+    override double GetDistance()
+    override double GetSpeed()
+    override double GetPace()
+}
+
+class CyclingActivity {
+    double _speed
+    --
+    override string GetExerciseName()
+    override double GetDistance()
+    override double GetSpeed()
+    override double GetPace()
+}
+
+class SwimmingActivity {
+    int _lapCount
+    --
+    override string GetExerciseName()
+    override double GetDistance()
+    override double GetSpeed()
+    override double GetPace()
+}
+
+ActivityBase <|-- RunningActivity
+ActivityBase <|-- CyclingActivity
+ActivityBase <|-- SwimmingActivity
+
+@enduml
